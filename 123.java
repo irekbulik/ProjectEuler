@@ -1,7 +1,7 @@
 //
-// problem 122
+// problem 123
 //
-//Answer 122 = 21035
+//Answer 123 = 21035
 //
 //real	0m0.145s
 //user	0m0.129s
@@ -32,7 +32,7 @@ class problem122{
         Current_Prime ++ ;
         if(2*Current_Prime*i>10000000000L&&Current_Prime%2==1) break;
       }
-        System.out.println("Answer 122 = " + Current_Prime ) ;  
+        System.out.println("Answer 123 = " + Current_Prime ) ;  
         
    }
  static boolean IsPrimeWilson(long input){
