@@ -2,7 +2,7 @@
 !
 ! gfortran -Ofast 
 !
-! Euler 572 = 19737656
+! Euler 572 =  19737656
 !
 !real    4m57.297s
 !user    4m56.805s
@@ -91,8 +91,10 @@
 200     continue 
 ! DEGENERACY FACTOR:
 100     continue 
+                
+         write(*,1800) total
 
-        print *, total
+1800    format('Euler 572 =',I10)
 
         return
         end 
@@ -111,6 +113,10 @@
         do i2 = -MAX_LOOP,MAX_LOOP
           if(i1*i2.eq.val) then
           nd = nd + 1 
+           if(nd.gt.MAX_DIVISORS) then 
+            print *, 'error'    
+            stop
+           endif 
           in(1,nd) = i1
           in(2,nd) = i2 
           endif 
