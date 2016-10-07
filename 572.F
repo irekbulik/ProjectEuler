@@ -89,7 +89,6 @@
 
 
 200     continue 
-! DEGENERACY FACTOR:
 100     continue 
                 
          write(*,1800) total
