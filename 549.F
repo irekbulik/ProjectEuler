@@ -89,6 +89,10 @@
         endif 
          if(mod(n,div).eq.0) then 
             nf        = nf + 1 
+            if(nf.gt.nfact) then
+              print *, 'factors overflow'
+              stop
+            endif 
             fac(1,nf) = div 
             fac(2,nf) = 1 
 200         n=n/div
