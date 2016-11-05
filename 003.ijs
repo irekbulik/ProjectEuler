@@ -1,4 +1,4 @@
-NB. jl < problem3.j
+NB. jl < 003.ijs
 NB.      6857
 NB.   
 NB. real	0m0.048s

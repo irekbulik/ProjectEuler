@@ -1,4 +1,4 @@
-NB.	 [0] time jl < 007.j 
+NB.	 [0] time jl < 007.ijs 
 NB.	      104743
 NB.   
 NB.	real	0m0.039s
