@@ -8,3 +8,4 @@ It is high time to start collecting Project Euler solutions.
 
 * Algorithms are either obvious or are documented in the code. 
 
+* clearly J solutions are quite lame but I learn as I go 
