@@ -1,27 +1,23 @@
 ! Answer 577 =    265695031399260211
 !
-!real    0m0.093s
-!user    0m0.090s
+!real    0m0.088s
+!user    0m0.084s
 !sys     0m0.003s
+
 #define MAX_SIZE 12345
         program Eu577 
         implicit none
-        integer*8  siz(MAX_SIZE) 
         integer*8  nh
         integer*8  k 
-        integer*8  ans 
+        integer*8  ans, km1
         
-        siz(1) = 0
-        do k = 2 , MAX_SIZE
-           siz(k) = siz(k-1) + nh(k)
+        km1 = 0 
+        ans = 0
+        do k = 3 , MAX_SIZE
+           km1 = km1 + nh(k)
+           ans = ans + km1
         enddo        
         
-        ans = 0 
-
-        do k = 1 , MAX_SIZE
-           ans = ans + siz(k)
-        enddo
-
         print *, "Answer 577 = ", ans 
 
         return
