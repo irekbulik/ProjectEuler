@@ -4,8 +4,8 @@
 !
 ! WE FOUND IT ON THEIR WEBSITE
 !
-#define MAXI 1000
-#define MAXJ 1000
+#define MAXI 10
+#define MAXJ 10
         program intopt
         implicit none
         real*8     wt(MAXI,MAXJ+1)
@@ -16,16 +16,16 @@
 ! SET TO SOME NEGATIVE NUMBER LOWER THAN -1
         call aset(MAXI*(MAXJ+1),wt,-1.D0)       
 !
-        call getwt(res,100,99,40,getwt)
+        call getwt(res,10,9,40,getwt)
          print *, res
-        call getwt(res,1000,999,40,getwt)
+        call getwt(res,10,9,40,getwt)
          print *,res
 !
-!        do i = 0 , 10
-!        call getwt(res,10,i,40,getwt)
-!        enddo
+        do i = 0 , 10
+        call getwt(res,10,i,40,getwt)
+        enddo
 
-!        call prt(wt)
+        call prt(wt)
 !
         return
         end 
