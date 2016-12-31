@@ -14,7 +14,7 @@
         real*8     res 
         integer    i,j
 ! SET TO SOME NEGATIVE NUMBER LOWER THAN -1
-        call aset(MAXI*(MAXJ+1),wt,-1.D0)       
+        call aset(MAXI*(MAXJ+1),wt,-2.D0)       
 !
         call getwt(res,10,9,40,getwt)
          print *, res
