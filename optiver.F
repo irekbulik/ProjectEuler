@@ -14,18 +14,12 @@
         real*8     res 
         integer    i,j
 ! SET TO SOME NEGATIVE NUMBER LOWER THAN -1
-        call aset(MAXI*(MAXJ+1),wt,-1.D0)       
+        call aset(MAXI*(MAXJ+1),wt,-2.D0)       
 !
-        call getwt(res,10,9,40,getwt)
+        call getwt(res,2,1,40,getwt)
          print *, res
-        call getwt(res,10,9,40,getwt)
+        call getwt(res,3,1,40,getwt)
          print *,res
-!
-        do i = 0 , 10
-        call getwt(res,10,i,40,getwt)
-        enddo
-
-        call prt(wt)
 !
         return
         end 
@@ -81,13 +75,10 @@
 ! OBTAIN T(I-1,J) 
           call recur(tm0,i-1,j  ,m,recur)
 ! THE CURRENT WAIT TIME HAS TO BE GREATER THAN T(I-1,J-1)-T(I-1,J) 
-! TO JUSTIFY THE USE OF THE WAND. WE ASSUME WE CAN SEE EVERY SECOND
-! ONLY. WE WILL WORK WITH CURWT BEING NOT TO USE THE WANT 
+! TO JUSTIFY THE USE OF THE WAND. ACTUALLY, WE CONTINUE ASSUMING TIME
+! IS DISPLAYED IN A CONTINUOUS WAY 
           curwt = tmm - tm0
         
-!          print *, 'at ',i,' intersections with ',j,' wands',
-!     $             'wait time',curwt
-
              if(int(curwt)+1.gt.m.or.int(curwt).lt.0) then 
               write(*,*) 'incorrect in getwt'
               stop      
