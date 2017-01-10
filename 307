@@ -1,0 +1,7 @@
+Probability that there are at most 2 errors on a given chip is here:
+
+Sum[(2 m)!/2^m Binomial[n, m]*Binomial[k, 2*m]*Product[i, {i, n - m, n - (k - m) + 1, -1}], {m, 0, Floor[k/2]}]/n^k
+  
+Important thing to notice the first term (2m)!/2^m to divide the pairs of defects into m double deficient chips.
+
+
