@@ -1,4 +1,4 @@
-! NOTE THAT THE PROBABILITY THAT ITH COIN IN N LONG CHAIN IS 
+! NOTE THAT THE PROBABILITY THAT ITH COIN IN N LONG CHAIN IS NOT FLIPPED  
 !                         (I-1)**2 + (N-I)**2
 !               P(I,N) = ---------------------
 !                                 N**2 
