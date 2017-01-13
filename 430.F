@@ -5,7 +5,7 @@
 ! 
 ! PROBABILITY THAT AFTER K TURNS COIN I IS WHITE SIDE UP, ASSUMING IT 
 ! STARTED LIKE THAT IS 
-!                             1  [ (             )      ]
+!                             1  [ (             )K     ]
 !               W(I,K,N) =   --- [ ( 2 P(I,N) -1 )  + 1 ]
 !                             2  [ (             )      ]
 !
