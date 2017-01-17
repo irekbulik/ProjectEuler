@@ -1,0 +1,52 @@
+For the first floor, it is easy to see that P(1,r) = r*(r+1)/2.
+
+Generally, each row will add to the perfect square but not necessary starting from 2^2.  
+In other words, for any floor f and any room r we have 
+
+a(n+1) = a(n-1) + 2*r + 2*k + 1 
+
+where k is defined as a_1 + a_2 = (2+k)^2 
+k = 0 for first floor and k = 1 for floor 2 and 3... 
+We also need initial conditions for a_1 which we can use to compute k and a_2. 
+Then a series for odd and even entries appear. 
+
+We can now compute the desired value given a1 a2 and k 
+for r odd,
+P(f,r) = a1 + (r-1)/2*(2*k+2+r) 
+and even
+P(f,r) = a2 + (r/2-1)*(2k+3+r)
+
+given a1, k is ceiling[sqrt(2*a1+1)]  - 2 
+and a2 = (2+)^2 - a1 
+
+So how do we get the value for first room on floor f which is the last missing bit?
+This one I don't see yet how to prove but the is pattern easy. 
+
+the code and the answer 
+(*****************************************************)
+(*****************************************************)
+(*****************************************************)
+p[a1_, a2_, k_, r_] := 
+ If[Mod[r, 2] == 1, a1 + (r - 1)/2*(2*k + 2 + r), 
+  a2 + (r/2 - 1)*(2*k + r + 3)]
+k[a1_] := Ceiling[Sqrt[2*a1 + 1]] - 2
+a2[a1_] := (2 + k[a1])^2 - a1;
+a1[f_] := Max[Floor[f^2/2], 1]
+(*****************************************************)
+(*****************************************************)
+(*****************************************************)
+P[f_, r_] := p[a1[f], a2[a1[f]], k[a1[f]], r]
+tot = 0;
+n2 = 27;
+n3 = 12;
+For[i = 0, i <= n2, i++,
+  For[j = 0, j <= n3, j++,
+   r = 2^i*3^j;
+   f = 2^(n2 - i)*3^(n3 - j);
+   tot += P[f, r];
+   ]
+  ];
+Mod[tot, 10^8]
+(*****************************************************)
+(*****************************************************)
+(*****************************************************)
