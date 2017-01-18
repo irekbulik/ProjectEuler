@@ -19,10 +19,11 @@
 !       
         do i = 3 , 30
          s = 0.0d0
-         do j = 1 , i-1 
-            s = s + 2.0d0**(j-1)
-         enddo
-         e(i) = e(i-1) + s/i
+! THIS CAN BE SUMMED AS USUAL GEOMETRIC SERIES 
+!         do j = 1 , i-1 
+!            s = s + 2.0d0**(j-1)
+!         enddo
+         e(i) = e(i-1) + (2.0D0**(i-1)-1.0d0)/i
         enddo
         
         write(*,1800) e(30)
