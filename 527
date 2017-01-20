@@ -8,7 +8,12 @@ b[n_] := b[n] =
 For the random, the recurence is linear and has the form
 r[n] = r[n-1] + 2/n - (1+r[n-1])/n^2
 
-That can be solved in Wolfram Alpha which with r[1] = 1 gives
+We can do transformation R[n] = n/(n+1) * r[n] to get 
+  R[n]-R[n-1] = (2n-1)/(n*(n+1))
+  with R[0] = 1 
+  So R[n] = sum[(2k-1)/(k*(k+1)),{k,1,n}]
+  and r[n] = n+1/n*sum[2(k-1)/(k*(k+1)),{k,1,n}]
+Summ can be evalutated with Wolfram Alpha 
 
 r[n_] := (-6 n + 4*(n + 1)*HarmonicNumber[n])/(2*n)
 
