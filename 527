@@ -13,7 +13,8 @@ We can do transformation R[n] = n/(n+1) * r[n] to get
   with R[0] = 1 
   So R[n] = sum[(2k-1)/(k*(k+1)),{k,1,n}]
   and r[n] = n+1/n*sum[2(k-1)/(k*(k+1)),{k,1,n}]
-Summ can be evalutated with Wolfram Alpha 
+Summ can be evalutated quite easily by noting 
+1/(k*(k+1)) = 1/k - 1/(k+1) 
 
 r[n_] := (-6 n + 4*(n + 1)*HarmonicNumber[n])/(2*n)
 
