@@ -1,0 +1,21 @@
+So the binary search is super easy and fast. Brute force algo is enough 
+b[n_] := b[n] = 
+  If[n == 0, 0, 
+   If[n == 1, 1, 
+    1/n + (Floor[(1 + n)/2] - 1)/n*(1 + b[Floor[(1 + n)/2] - 1]) + (
+      n - Floor[(1 + n)/2])/n*(1 + b[n - Floor[(1 + n)/2]])]]
+      
+For the random, the recurence is linear and has the form
+r[n] = r[n-1] + 2/n - (1+r[n-1])/n^2
+
+That can be solved in Wolfram Alpha which with r[1] = 1 gives
+
+r[n_] := (-6 n + 4*(n + 1)*HarmonicNumber[n])/(2*n)
+
+
+We get answer in < 10 ms. 
+
+11.92412011
+
+
+      
