@@ -1,0 +1,30 @@
+Well, it is quite clear that for n<m the 
+
+M      [n]  = n + (Floor[(m-n)/(k-s)]+1)*(k-s) - s 
+ m k s 
+
+let us define l = k-s and x = s - l. Then the solutions 
+are n> m - (x+1)*l and n<= m - x*l so the sum of terms 
+
+l*(l+1)/2 + l*m - l*l*(x+1)
+
+the condition is however that l divides s. 
+We can do this one as follows 
+ 
+suma[m_, l_, s_] := 
+ If[l <= s && Mod[s, l] == 0, (l*(l + 1))/2 + l*m - l*l - l*(s - l), 
+  0]
+
+
+gt = 0;
+p = 1000000;
+For[s = 1, s <= p - 1, s++,
+ a = Divisors[s];
+ For[i = 1, i <= Length[a], i++, 
+  gt += If[a[[i]] <= p - s, suma[p, a[[i]], s], 0]]
+]
+
+the code can be further optimized, but that problem is quite boring anyways. I am rather certain that pure fortran with same algo will do under minute.  	
+
+Answer: 208517717451208352
+
