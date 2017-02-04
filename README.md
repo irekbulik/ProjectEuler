@@ -9,3 +9,5 @@ It is high time to start collecting Project Euler solutions.
 * Algorithms are either obvious or are documented in the code. 
 
 * clearly J solutions are quite lame but I learn as I go 
+
+* well, 473 is quite cool and it does seem I guessed the answer.. and used integer*16
