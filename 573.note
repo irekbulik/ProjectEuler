@@ -17,7 +17,7 @@ Now, we bring the rest home
 We spotted a patern: 
 
 	             1     ( n )   (  k  ) k            (n-k) 
-	 P[k,n] =  ----- * |---| * ( --- )   * (1 - k/n)   
+	 P[k,n] =  ----- * |   | * ( --- )   * (1 - k/n)   
  		     k     ( k )   (  n  )      
 
 In the limit n -> k , you replace  (1-k/n)^(n-k) with 1. 
