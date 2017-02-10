@@ -1,30 +1,39 @@
-! [0] gfortran -fdefault-real-8 -fdefault-double-8 -fdefault-integer-8 -O3  -ffast-math  -funroll-all-loops 589.F -o 589 ; time ./589
+![0] gfortran -fdefault-real-8 -fdefault-double-8 -fdefault-integer-8 -O3 -ffast-math -funroll-all-loops -fopenmp 589.F -o 589 ; time ./589
 !Answer 589 =     131776959.25
 !
-!real    0m2.712s
-!user    0m2.705s
-!sys     0m0.001s
-
+!real    0m1.074s
+!user    0m4.078s
+!sys     0m0.006s
 
         program Eu589
 #define _MAX_ 200
+#define MAXCPU 4
         implicit none
         real*8   exptim
-        real*8   suma
-        real*8   arr((_MAX_+1)*(_MAX_+2))
+        real*8   suma(MAXCPU)
+        real*8   arr((_MAX_+1)*(_MAX_+2),MAXCPU)
         integer  n,m
-
-        suma = 0.0d0
+        integer  getcpu,ncpu,setcpu,icpu
         
+        ncpu = setcpu()
+        if(ncpu.gt.MAXCPU) stop('too many cpu')
+        do n = 1 , ncpu 
+           suma(n) = 0.0d0
+        enddo 
+
+!$omp   parallel do if(ncpu.gt.1) default(shared) schedule(dynamic,1) 
+!$omp+  private(icpu,n)
         do m = 2, 100
+           icpu = getcpu()
         do n = 1, m-1 
-        
-        suma = suma +  exptim(5,n,m,arr)
-
+        suma(icpu) = suma(icpu) +  exptim(5,n,m,arr(1,icpu))
         enddo
         enddo
+        do n = 2 , ncpu
+           suma(1) = suma(1) + suma(n)
+        enddo
 
-        write(*,1800), suma
+        write(*,1800), suma(1)
         
 1800    format("Answer 589 = ", F16.2)
 
@@ -124,3 +133,27 @@
 1        a(i) = 0.0d0
         return
         end        
+
+        integer function setcpu()
+        implicit none 
+#if defined (_OPENMP)
+        integer  omp_get_max_threads
+        setcpu = min(omp_get_max_threads(),MAXCPU)
+        call omp_set_num_threads(setcpu)
+#else 
+        setcpu = 1 
+#endif 
+        return
+        end 
+
+
+        integer function getcpu()
+        implicit none
+#if defined (_OPENMP)
+        integer  omp_get_thread_num 
+        getcpu = omp_get_thread_num() + 1 
+#else 
+        getcpu = 1 
+#endif 
+        return
+        end 
