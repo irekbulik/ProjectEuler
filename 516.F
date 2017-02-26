@@ -1,11 +1,10 @@
 #define __limit__ 12
-![0] gfortran -fdefault-integer-8 -fdefault-real-8 -fdefault-double-8 -O3 516.F -o 516 ; time ./516 
+!gfortran -fdefault-integer-8 -fdefault-real-8 -fdefault-double-8 -O3 516.F -o 516 ; time ./516 
 !Answer 516 =        939087315
 !
-!real    0m3.243s
-!user    0m3.216s
-!sys     0m0.018s
-!
+!real    0m2.115s
+!user    0m2.085s
+!sys     0m0.024s
         program Eu516
         implicit none
         logical isprim
@@ -51,11 +50,13 @@
         integer  val,lim,tot 
         integer  mode
         integer  l2,l3,l5
-        integer  i2,i3,i5
-        real*8   lg2,lg3,lg5,lgv
+        integer  i2,i3,i5,fac2,fac3,fac5
+        integer  myexp
+        real*8   lg2,lg3,lg5,lgv,rlim
         data     mode/4294967296/
-        save     mode 
+        save     mode
         
+        rlim = real(lim)
         lgv = log10(real(val))
         lg2 = log10(2.0d0)
         lg3 = log10(3.0d0)
@@ -65,17 +66,48 @@
         l3 = int((real(lim)-lgv)/lg3)
         l5 = int((real(lim)-lgv)/lg5)
         
-          do 10 i2 = 0 , l2        
+          do 10 i2 = 0 , l2  
+             fac2 =  myexp(2,i2)     
           do 20 i3 = 0 , l3 
+                if(i2*lg2+i3*lg3+lgv.gt.rlim) goto 10 
+             fac3 =  myexp(3,i3)
           do 30 i5 = 0 , l5 
-                if(i2*lg2+i3*lg3+i5*lg5+lgv.gt.real(lim)) goto 30
-                tot = mod(tot + 2**i2*3**i3*5**i5*val,mode)
+                if(i2*lg2+i3*lg3+i5*lg5+lgv.gt.rlim) goto 30
+             fac5 =  myexp(5,i5)
+                tot = mod(tot+fac2*fac3*fac5*val,mode)
 30        continue 
 20        continue 
 10        continue 
 
         return
         end 
+
+        integer function myexp(b,p)
+        implicit none 
+        integer b,p
+        integer a,n,r
+
+        r = 1 
+        a = b 
+        n = p 
+
+100     continue 
+        
+        if(mod(n,2).eq.1) r = r*a
+        if(n/2.gt.0) then 
+           a = a * a
+           n = n / 2 
+        else
+           goto 200 
+        endif 
+        goto 100 
+200     continue 
+
+        myexp = r
+
+        return
+        end 
+
 
         subroutine makec(np,arr,len,wrk,gp,ngp,lim,maxv)
         implicit none
