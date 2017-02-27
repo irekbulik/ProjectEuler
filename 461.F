@@ -4,6 +4,14 @@
 !real    0m57.046s
 !user    0m56.107s
 !sys     0m0.155s
+!-- small improvemnt to help with sort
+! [0] gfortran -fdefault-real-8 -fdefault-integer-8 -O4 -funroll-loops -ffast-math 461.F -o 461 ; time ./461 
+!Answer 461       159820276
+!
+!real    0m38.106s
+!user    0m37.680s
+!sys     0m0.079s
+
         program Eu461
         implicit none 
         real*8   vals(14500*14501/2)
@@ -106,16 +114,19 @@
 
         i = 0 
         do 10 a = 1 , l 
-        do 10 b = a , l 
+        do 20 b = a , l 
         i = i + 1 
-10      v(i) = f(a,n)+f(b,n)
+        v(i) = f(a,n)+f(b,n)
+        if(v(i).gt.pi) goto 10 
+20      continue 
+10      continue 
         call sort(v,i)
-        do 20 a = i , 1 , -1 
+        do 30 a = i , 1 , -1 
          if(v(i).lt.pi) then 
          i = i + 1 
          return
         endif 
-20      continue
+30      continue
 
         return
         end 
