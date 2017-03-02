@@ -1,0 +1,12 @@
+sum = 0;
+lim = 10^8;
+pals = {};
+pal[n_] := Norm[IntegerDigits[n] - Reverse[IntegerDigits[n]]] == 0
+For[i = 1, i <= Floor[Sqrt[lim]], i++,
+  val = i^2;
+  j = i + 1;
+  While[val + j^2 < lim, {val += j^2, j++, 
+    If[pal[val], {AppendTo[pals, val]}]}]
+  ];
+Tr[Union[pals]]
+2906969179
