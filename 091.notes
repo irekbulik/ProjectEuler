@@ -1,0 +1,1 @@
+Yeah, just use scalar prodcut to verify angle, dont care about symmetry, scale by 2. brute force n^4 loop. Well below minute.
