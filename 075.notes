@@ -1,0 +1,15 @@
+Quite an easy problem using parametrization of pythagorean triples.  
+
+LIM = 1500000;
+L = Table[0, {i, 1, LIM}];
+For[m = 1, m <= Sqrt[LIM], m++,
+  For[n = 1, n < m, n++,
+   If[GCD[n, m] == 1 && Mod[n, 2]*Mod[m, 2] == 0,
+    {
+     k = 1;
+     While[k*(2*m*m + 2*m*n) <= LIM, {L[[k*(2*m*m + 2*m*n)]]++, k++}]
+     }
+    ]
+   ]
+  ];
+Sum[If[L[[i]] == 1, 1, 0], {i, 1, Length[L]}]
