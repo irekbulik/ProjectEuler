@@ -1,0 +1,5 @@
+number of solutions is floor[(sigma[0,n^2]+1)/2]
+9350130049860600
+4*9*5*7*Prod[Prime[k],{k,1,12}]
+pretty guessed 
+
