@@ -1,10 +1,11 @@
 NB.             51 1 2 5 8
 NB.       
-NB. real	0m3.158s
-NB. user	0m2.970s
-NB. sys		0m0.016s
-
-app =: 4 : '  (x {((3#4)#: i.4^3)&{ +`-`*`%)/ y '
+NB. real	0m0.868s
+NB. user	0m0.850s
+NB. sys 	0m0.012s
+NB.
+list =: ((3#4)#: i.4^3){ +`-`*`%
+app =: 4 : '  (  x { list) / y '
 is_int =: ( 0=1&|@(* _>| ) ) *. (_>|)
 gen_list =: 3 : '(is_int # ]) ((app&y)"0) (i.4^3)'
 NB. THERE IS ABSOLUTE VALUE HERE BECAUSE WE CAN PUT - IN FRONT, ALWAYS!
