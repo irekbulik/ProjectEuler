@@ -1,0 +1,14 @@
+NB.             51 1 2 5 8
+NB.       
+NB. real	0m3.158s
+NB. user	0m2.970s
+NB. sys		0m0.016s
+
+app =: 4 : '  (x {((3#4)#: i.4^3)&{ +`-`*`%)/ y '
+is_int =: ( 0=1&|@(* _>| ) ) *. (_>|)
+gen_list =: 3 : '(is_int # ]) ((app&y)"0) (i.4^3)'
+NB. THERE IS ABSOLUTE VALUE HERE BECAUSE WE CAN PUT - IN FRONT, ALWAYS!
+count_list =: 3 : '+/1&=(-i.@#) /:~(0&<# ])~.|,gen_list"1 (i.!4) A. y'
+NB. THAT IS SUPER LAME 
+{: /:~ (count_list , ]) "1 }.~.([ *((0=(#-#@~.)) * ([ -: /:~)))"1 ((>:(4#9)#: i.9^4))
+
