@@ -1,3 +1,8 @@
+NB. 252541322550
+NB. real	1m0.647s
+NB. user	0m59.827s
+NB. sys		0m0.168s
+
 fib=: 3 : 0 M.
  if. 1>:y do. y else. (fib y-1)+fib y-2 end.
 )
@@ -42,4 +47,4 @@ poly =: 4 : 0
  mod | temp
  temp % ( <: xva+*:xva)
 )
-(!15x) | +/((10^15x);(!15x))&poly"0 (>:i.100)
+](!15x) | +/((10^15x);(!15x))&poly"0 (>:i.100)
