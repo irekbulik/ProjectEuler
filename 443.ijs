@@ -12,8 +12,9 @@ NB.
 NB.  	 n + ( p1 - p1 | n ) ad d = p1 - p1|n 
 NB.  
 NB. and what is the value at the new point? We have assumed that jumps always occur or 3 n, We should 
-NB. get it recursively now. We know now that gcd at new n with the previous g(n-1) is p1.  
-NB. By defintion, the value just before jump is 3n + d-1 and by what we just show gdc(n,g(n-1)) at jump is p1. 
+NB. get it recursively now. We know now that gcd at new n with the previous g(n-1) is p1. 
+NB. By defintion, the value just before jump is 3n + d-1.  
+NB. 
 NB. The g(n) at jump is then 3n + d - 1 + p1. Well, we know that 2n-1 is divisible by p1. Then
 NB.		  n = k p1 + (p1+1)/2 for some k, Such that p1|n = (p1+1)/2.  
 NB. Note that p1 is never 2. We can now see that 
