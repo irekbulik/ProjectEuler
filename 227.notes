@@ -1,0 +1,18 @@
+That is rather simple problem and self explanatory:
+Simple solution in Wolfram can be made with d taking care of swapping and symmetry.
+Solution parametrized as distances. 
+A = Table[0, {i, 1, 51}, {j, 1, 51}];
+d[i_, n_] := If[i < 0, Abs[i], If[i > n/2, n - i, i]]
+For[i = 2, i <= 51, i++,
+  j = i - 1;
+  A[[i, 1 + d[j, 100]]] += -1/2.;
+  A[[i, 1 + d[j + 1, 100]]] += 8/36.;
+  A[[i, 1 + d[j - 1, 100]]] += 8/36.;
+  A[[i, 1 + d[j - 2, 100]]] += 1/36.;
+  A[[i, 1 + d[j + 2, 100]]] += 1/36.;
+  ];
+A[[1, 1]] = 1;
+v = Table[-1, {i, 1, 51}];
+v[[1]] = 0;
+SetPrecision[LinearSolve[A, v][[51]], 10]
+3780.618622
