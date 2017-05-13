@@ -29,7 +29,7 @@ Quite easy to follow now, by constructing the arr
 
 ```j
  n    =: 31
- arr =: ([,(({:*.>:@#)))^:n (1x) 
+ arr =: *./ \ >:i.>:n
  p =: 3 : 0 
  <.(((4^y)-2)%((<:y)}arr)) - <.(((4^y)-2)%(y}arr))
  )
@@ -37,9 +37,10 @@ Quite easy to follow now, by constructing the arr
  echo 'Answer 601: ' , ": +/p"0 >:(i.n)
  echo   'Time ' , (": 1000 (6!:2) '+/p"0 >:(i.n)') , 's'
 ```  
+
              
    Answer 601: 1617243
    Time 0.00025s
    
-             
    
+
