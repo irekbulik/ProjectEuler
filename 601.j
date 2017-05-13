@@ -35,8 +35,11 @@ Quite easy to follow now, by constructing the arr
  )
  echo ' ' 
  echo 'Answer 601: ' , ": +/p"0 >:(i.n)
+ echo   'Time ' , (": 1000 (6!:2) '+/p"0 >:(i.n)') , 's'
 ```  
              
    Answer 601: 1617243
+   Time 0.00025s
    
+             
    
