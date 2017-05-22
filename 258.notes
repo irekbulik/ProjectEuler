@@ -1,0 +1,25 @@
+A little bruteforced, but runnable. 
+
+Clear["Global`*"]
+siz = 2000;
+A = Table[If[i == j || j == i + 1, 1, 0], {i, 1, siz}, {j, 1, siz}];
+A[[siz, siz]] = 0;
+A[[siz, 1]] = 1;
+V0 = Table[1, {i, 1, siz}];
+MatPowMod[b0_, p0_, m0_] := Module[{b = b0, p = p0, m = m0, r},
+   r = IdentityMatrix[Length[b]];
+   While[p > 1,
+    {
+     If[Mod[p, 2] == 1, r = Mod[r.b, m]];
+     b = Mod[b.b, m];
+     p = Quotient[p, 2]
+     }
+    ];
+   If[p0 > 0, Mod[r.b, m], r]
+   ]
+f[n_] := f[n] = If[n <= siz - 1, 1, f[n - siz + 1] + f[n - siz]];
+myf[n_, m_] :=  Mod[Reverse[  MatPowMod[A, Quotient[n, siz - 1], m].V0][[Mod[n, siz - 1] + 1]],   m]
+
+Timing[myf[10^18, 20092010]]
+
+{559.194947, 12747994}
