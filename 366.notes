@@ -1,0 +1,19 @@
+Small experimentation implies that the only way player 1 looses is when 
+the number of stones is the Fibbonaci number. 
+
+Found a patter,
+
+Clear[Fib, S]
+t[n_] := n*(n + 1)/2
+Fib[n_] := 
+  Fib[n] = If[n == 1, 1, If[n == 2, 2, Fib[n - 1] + Fib[n - 2]]];
+S[n_] := S[n] = 
+  If[n <= 3, 0, 
+   If[n == 4, 1, 
+    If[n == 5, 3, t[Floor[(Fib[n - 1] - 1)/2]] + S[n - 2]] - 
+     t[Floor[(Fib[n - 4] - 1)/2]]]]
+
+Mod[Tr@Table[S[n], {n, 1, 86}] + t[10^18 - Fib[86]], 10^8]
+
+88351299
+

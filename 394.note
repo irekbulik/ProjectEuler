@@ -1,0 +1,37 @@
+The CDF of larger slice to be below alpha:
+
+alpha^2/2
+
+let us define the given system
+
+ |---------------|------|
+ 0               f      1 
+ 
+then the expected value satisfies the equation
+ 
+ |-------|-------|------|
+ 0       a       f      1
+	     
+
+	    / f                f - y 
+ e(f) = 1 + |  d y  2 * y * e(-------)    
+            / 0                1 - y 
+
+where e(f) is the expected number of tries before we cross f. 
+Note we take care of the normalization. We now need to find solution to
+the equation. The answer would be e[1-1/40.]
+
+We did some experiments with Neuman series in Wolfram and then looked
+at the series expansion. It seems that the solution is 
+
+e[x] + 1 + x^2 + sum[2/3*x^(i)/(i),{i,4,...} 
+
+It does converge slowly, but summing the series to 5000, we get the answer
+3.2370342194.
+
+
+
+
+
+
+
