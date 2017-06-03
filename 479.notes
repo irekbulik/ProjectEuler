@@ -1,0 +1,6 @@
+so it seems that (a+b)*(b+c)*(c+a) = 1-k^2.
+n = 10^6;
+Mod[Sum[Mod[(k^2 - 1)*(PowerMod[(1 - k^2), n, 10^9 + 7] - 1)*
+    PowerMod[k^2, -1, 10^9 + 7], 10^9 + 7], {k, 1, n}], 10^9 + 7]
+sooo...    
+    191541795
