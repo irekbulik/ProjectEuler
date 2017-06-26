@@ -1,12 +1,7 @@
-!                 4989
-!
-!real    0m0.044s
-!user    0m0.038s
-!sys     0m0.005s
 
-        program Eu135
+        program Eu136
         implicit none
-        integer,  parameter   :: maxn = 10**6-1
+        integer,  parameter   :: maxn = 5*10**7-1
         integer               :: a,x,n(maxn),v,tot
 
         n = 0 
@@ -20,7 +15,7 @@
 
         tot = 0 
         do a = 1 , maxn
-           if(n(a).eq.10) tot = tot + 1 
+           if(n(a).eq.1) tot = tot + 1 
         enddo
 
         print *, tot 
