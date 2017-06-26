@@ -1,0 +1,24 @@
+Let us make a substitution 
+	t = log(p)/log(2) 
+We are then task to find integer solutions to 
+	p**2 - p < = m  
+There are 
+	floor[0.5+sqrt(1+4*m)] 
+of those but we need to take away 1 because 1 is not a valid solution because k is not positive. 
+Now, the question is how many of them are powers of two (this gives perfect partition). there are of course log(m)/log(2) of those. 
+
+The fraction is then 
+	s(m) = floor(0.5+sqrt(1+4*m)-1)
+	
+		floor(log(s(m)/log(2))
+	p(m) = -----------------------
+		         s(m) 
+
+You can probably solve it now, but I did some hand optimization of starting point and then 
+found solution after bracketing. The point was that there are values of m that have exactly the fraction we are looking 
+for so you need to look for next. Not very inspired problem. That is the answer
+
+44043947822  
+
+ 
+
