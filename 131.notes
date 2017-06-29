@@ -1,0 +1,13 @@
+It is quite easy to see that a is perfect cube and p+a is perfect cube. 
+Take no time. 
+tot = 0;
+l = 2;
+Lim = 1000000;
+While[l^3 - (l - 1)^3 < Lim,
+  For[k = 1, k <= l - 1, k++,
+   If[l^3 - k^3 < Lim && PrimeQ[l^3 - k^3], tot++];
+   ];
+  l++
+  ];
+Print[tot]
+173
