@@ -1,0 +1,33 @@
+bit bruteforce in wolfram
+Permuts = Permutations[{1, 2, 3, 4, 5, 6, 7, 8, 9}];
+Types = IntegerPartitions[9];
+good = {};
+For[ip = 1, ip <= Max[1, Length[Permuts]], ip++,
+  CurP = Permuts[[ip]];
+  For[it = 2, it <= Length[Types], it++,
+   n = FromDigits[CurP[[1 ;; Types[[it]][[1]]]]];
+   p = n;
+   AllPrime = PrimeQ[n];
+   off = Types[[it]][[1]];
+   For[ic = 2, ic <= Length[Types[[it]]], ic++,
+    n = FromDigits[CurP[[off + 1 ;; off + Types[[it]][[ic]]]]];
+    off += Types[[it]][[ic]];
+    AllPrime = AllPrime && PrimeQ[n];
+    p *= n;
+    If[! AllPrime, Break[]]
+    ];
+   If[AllPrime, good = Append[good, p]]
+   ]
+  ];
+Print[Length[Union[good]]];
+
+44680 
+
+Could optimize but that is not inspired. 
+
+
+
+
+
+
+
