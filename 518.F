@@ -82,9 +82,8 @@
         end       
 
         integer function gcd(a,b)
-        implicit none
-        integer  a,b
-        integer  ia,ib
+        integer a,b
+        integer ia,ib
 
         ia = a 
         ib = b 
