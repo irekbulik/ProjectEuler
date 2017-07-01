@@ -1,0 +1,3 @@
+Well, here I was too smart and looked for y that is both sum and difference of squares.
+Then I looked up the values that form them and creates x,z. Then i checked if  their sum and difference is square.
+The problem is that my binary search failed for some cutoff, due to nonuniqness. Did not like the problem, won't work on it more. 
