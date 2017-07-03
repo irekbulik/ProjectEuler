@@ -13,7 +13,7 @@
        if(isprime(n^2+1)&&isprime(n^2+3)&&isprime(n^2+7)&&isprime(n^2+9)&&isprime(n^2+13)&&isprime(n^2+27),tot+=n;print(n))
      )
    );
- n+=4;
+ n+=9;
  );
  print("total = ",tot)
  }
