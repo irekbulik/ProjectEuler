@@ -1,0 +1,26 @@
+Not much to do. Some primality testing + modular matrix power and we get the answer in no time.
+Prime generation takes most time, we should use pari or something. 
+
+prims = {};
+m = 1234567891011;
+k = 10^14;
+For[i = 1, i <= 10^5, i++,
+  While[! PrimeQ[k], k++];
+  AppendTo[prims, k];
+  k++];
+  Fib[n_, m_] := Module[{n0 = n, mat},
+   a = {{1, 1}, {1, 0}};
+   res = IdentityMatrix[2];
+   While[True,
+    If[Mod[n0, 2] == 1, res = Mod[res.a, m]];
+    n0 = Quotient[n0, 2];
+    a = Mod[a.a, m];
+    If[n0 == 1, Break[]];
+    ];
+   If[n > 0, res = Mod[res.a, m]];
+   res[[1, 2]]
+   ];
+Mod[Sum[Fib[prims[[i]], m], {i, 1, 10^5}], m]
+283988410192
+
+  
