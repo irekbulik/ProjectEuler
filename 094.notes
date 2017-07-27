@@ -1,0 +1,26 @@
+Well, that is a simple pell equation problem. I did not dig my old code, but used the 
+trusted 
+
+https://www.alpertron.com.ar/JQUAD.HTM
+
+and that are all the valid triangles with a and b columns
+
+5	6
+17	16
+65	66
+241	240
+901	902
+3361	3360
+12545	12546
+46817	46816
+174725	174726
+652081	652080
+2433601	2433602
+9082321	9082320
+33895685	33895686
+126500417	126500416
+
+the answer is then
+518408346
+
+The trick is to remember that a^2-b^2/4 must be a perfect square but not a 0.

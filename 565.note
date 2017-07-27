@@ -1,0 +1,35 @@
+Man, those guys at the forum...
+LIM = 11;
+vals = {};
+i = 1;
+tot = 0;
+While[Prime[i] <= Floor[10^LIM/12101], {
+   k = 1;
+   p = Prime[i];
+   While[p^k < 
+     10^LIM, {If[Mod[(p^(k + 1) - 1)/(p - 1), 2017] == 0, 
+      AppendTo[vals, {p, k}]]; k++}];
+   i++
+   }
+  ];
+For[i = 1, i <= Length[vals], i++,
+  v = vals[[i, 1]]^vals[[i, 2]];
+  n = Floor[10^LIM/v];
+  tot += v*n*(n + 1)/2;
+  vals2 = Append[vals, {vals[[i, 1]], 1}];
+  For[j = i + 1, j <= Length[vals2], j++,
+   v = vals[[i, 1]]^vals[[i, 2]]*vals2[[j, 1]]^vals2[[j, 2]];
+   n = Floor[10^LIM/v];
+   tot -= v*n*(n + 1)/2;
+   ]
+  ];
+k = 0;
+While[k*2017 - 1 <= Floor[10^LIM/12101], k += 2];
+k -= 2;
+While[k*2017 - 1 < 10^LIM,
+  If[PrimeQ[k*2017 - 1], {n = Floor[10^LIM/(k*2017 - 1)]; 
+    tot += n*(n + 1)/2*(k*2017 - 1)}];
+  k += 2
+  ];
+tot
+2992480851924313898
