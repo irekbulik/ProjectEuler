@@ -115,7 +115,7 @@
               endif 
             enddo
             enddo 
-                
+! use reflection symmetry in digits                
                              total = total + local_total 
         if(possible_sum/=18) total = total + local_total
 
