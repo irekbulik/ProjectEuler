@@ -13,13 +13,13 @@
         program test 
         implicit none 
         integer(kind=16),parameter :: number_of_die_top=10,number_of_die=20,number_of_sides=12,needed_sum=70,&
-                             max_reminder=needed_sum/number_of_die_top 
-        integer(kind=16)       :: i_1,i_2,i_3,i_4,i_5,i_6,i_7,i_8,i_9,i_10,min_value,max_value
-        integer(kind=16)      :: ordered_statistics(number_of_die),denominator,repeat_minimum
-        integer(kind=16)      :: factorial_array(0:number_of_die)
-        integer(kind=16)      :: reminder_die(max_reminder,number_of_die-number_of_die_top),i_reminder,i_repeated
-        integer(kind=16)      :: scaling_of_combination
-        integer(kind=16)      :: total,total_step
+                                      max_reminder=needed_sum/number_of_die_top 
+        integer(kind=16)           :: i_1,i_2,i_3,i_4,i_5,i_6,i_7,i_8,i_9,i_10,min_value,max_value
+        integer(kind=16)           :: ordered_statistics(number_of_die),denominator,repeat_minimum
+        integer(kind=16)           :: factorial_array(0:number_of_die)
+        integer(kind=16)           :: reminder_die(max_reminder,number_of_die-number_of_die_top),i_reminder,i_repeated
+        integer(kind=16)           :: scaling_of_combination
+        integer(kind=16)           :: total,total_step
         
         factorial_array(0) = 1 
         do i_1 = 1 , number_of_die
