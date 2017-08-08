@@ -1,25 +1,22 @@
 ! It seems by the given answer that the dices are distinguishable, which
 ! rather simplifies the problem
-! 
-!  Had to go quad on ints, but I could be careful with the factorials. 
+![0] gfortran -O3 240.f95 -o 240 ; time ./240
+! Answer =   7448717393364181966
 !
-! [0] gfortran -O3 240.f95 -o 240 ; time ./240 
-! Answer =  7448717393364181966
-!
-!real    0m0.021s
-!user    0m0.016s
-!sys     0m0.004s
-        
+!real    0m0.016s
+!user    0m0.014s
+!sys     0m0.002s
+!        
         program test 
         implicit none 
-        integer(kind=16),parameter :: number_of_die_top=10,number_of_die=20,number_of_sides=12,needed_sum=70,&
+        integer(kind=8),parameter :: number_of_die_top=10,number_of_die=20,number_of_sides=12,needed_sum=70,&
                                       max_reminder=needed_sum/number_of_die_top 
-        integer(kind=16)           :: i_1,i_2,i_3,i_4,i_5,i_6,i_7,i_8,i_9,i_10,min_value,max_value
-        integer(kind=16)           :: ordered_statistics(number_of_die),denominator,repeat_minimum
-        integer(kind=16)           :: factorial_array(0:number_of_die)
-        integer(kind=16)           :: reminder_die(max_reminder,number_of_die-number_of_die_top),i_reminder,i_repeated
-        integer(kind=16)           :: scaling_of_combination
-        integer(kind=16)           :: total,total_step
+        integer(kind=8)           :: i_1,i_2,i_3,i_4,i_5,i_6,i_7,i_8,i_9,i_10,min_value,max_value
+        integer(kind=8)           :: ordered_statistics(number_of_die),denominator,repeat_minimum
+        integer(kind=8)           :: factorial_array(0:number_of_die)
+        integer(kind=8)           :: reminder_die(max_reminder,number_of_die-number_of_die_top),i_reminder,i_repeated
+        integer(kind=8)           :: scaling_of_combination
+        integer(kind=8)           :: total,total_step
         
         factorial_array(0) = 1 
         do i_1 = 1 , number_of_die
@@ -100,8 +97,8 @@
              do i_reminder = 1 , min_value - 1 
              do i_repeated = 1 , number_of_die-number_of_die_top
               total_step = total_step + scaling_of_combination/(factorial_array(i_repeated)*factorial_array(repeat_minimum))&
-                                      * reminder_die(i_reminder,i_repeated)&
-                                      / factorial_array(number_of_die-number_of_die_top-i_repeated)
+                                      / factorial_array(number_of_die-number_of_die_top-i_repeated)&
+                                      * reminder_die(i_reminder,i_repeated)
              enddo 
              enddo 
 !
@@ -123,9 +120,9 @@
         
         subroutine get_factors(ordered_statistics,number_of_die_top,denominator,repeat_minimum)
         implicit none 
-        integer(kind=16),intent(in)  :: number_of_die_top,ordered_statistics(number_of_die_top)
-        integer(kind=16),intent(out) :: denominator,repeat_minimum                 
-        integer(kind=16)             :: i,group,group_value
+        integer(kind=8),intent(in)  :: number_of_die_top,ordered_statistics(number_of_die_top)
+        integer(kind=8),intent(out) :: denominator,repeat_minimum                 
+        integer(kind=8)             :: i,group,group_value
         repeat_minimum = 1 
         denominator    = 1 
         
