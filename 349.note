@@ -1,0 +1,2 @@
+after some time it becomes like glider in the game of life. The function is
+f[n_] := 720 + Floor[(n - 10000)/104]*12 + rest[[(n - 10000) - 104*Floor[(n - 10000)/104] + 1]] /; n >= 10000
