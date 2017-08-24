@@ -1,2 +1,17 @@
 after some time it becomes like glider in the game of life. The function is
 f[n_] := 720 + Floor[(n - 10000)/104]*12 + rest[[(n - 10000) - 104*Floor[(n - 10000)/104] + 1]] /; n >= 10000
+
+To iterate on the matrix use
+d = 3; x = 100; y = 100;
+A = Table[0, {i, 1, 2*x + 1}, {j, 1, 2 y + 1}];
+Iterate[] := Module[{},
+   (* Change the color *)
+   A[[x, y]] = Mod[A[[x, y]] + 1, 2];
+   (* Rotate *)
+   If[A[[x, y]] == 1, d = Mod[d - 1, 4], d = Mod[d + 1, 4]];
+   (* Change the direction *)
+   If[d == 0, y++];
+   If[d == 1, x++];
+   If[d == 2, y--];
+   If[d == 3, x--]
+   ];
