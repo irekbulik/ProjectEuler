@@ -1,0 +1,38 @@
+That problem checks if we can google semiconvergents.Super hacky and slow but I could not find my cont frac code.
+
+
+Clear[BestDen]
+BestDen[n_, maxden_] := 
+ Module[{n0 = n, dm1, dm0, ret, hm1, hm0, i, a, ba},
+  a = Convergents[Sqrt[n], 45];
+  If[Denominator[Last[a]] < maxden, {Print["too small"], Quit[]}];
+  i = 1;
+  While[(a[[i]] // Denominator) <= maxden, i++];
+  i--;
+  dm1 = Denominator[a[[i - 1]]];
+  dm0 = Denominator[a[[i]]];
+  hm1 = Numerator[a[[i - 1]]];
+  hm0 = Numerator[a[[i]]];
+  (* NOW, WE know we have the test candidate *)
+  i = 1;
+  ba = Abs[Sqrt[n] - hm0/dm0];
+  ret = dm0;
+  While[i*dm0 + dm1 <= 
+    maxden, {If[
+     Abs[Sqrt[n] - (hm0*i + hm1)/(dm0*i + dm1)] < 
+      ba, {ba = Abs[Sqrt[n] - (hm0*i + hm1)/(dm0*i + dm1)], 
+      ret = dm0*i + dm1}], i++}];
+  ret
+  ];
+  
+  Timing[
+ tot = 0;
+ For[i = 1, i <= 100000, i++,
+  If[! IntegerQ[Sqrt[i]], {tot += BestDen[i, 10^12]}]];
+ tot
+ ]
+ 
+ 
+ {247.21, 57060635927998347}
+ 
+  
