@@ -15,6 +15,10 @@ Cntw0[n_, k_, is_] :=   If[is, Sum[Cnt0[n, k, i], {i, 1, n - k}], Cnt[n, k]];
 f[n_, k_, can_] := If[! can, (9 - k)^n, (9 - k)*(10 - k)^(n - 1)]
 
 (* function we need to implement for the problem at hand, it is rather self explanatory *)
+(* The factor or 1/2 arisies from the fact we need ordered pairs, which is always the case *)
+(* when the numbers have less digits in the innermost sum, so no factor of 2. Diagoals are removed *)
+(* by not including them in the full pairs set *) 
+
 fun[l_] := (10^l - 1)*(10^l - 2)/2 - 
   Sum[Sum[Cntw0[n, k, True]*(f[n, k, False]/2 + Sum[f[m, k, False], {m, 1, n - 1}]) +
      Cntw0[n, k, False]*(f[n, k, True]/2 + Sum[f[m, k, True], {m, 1, n - 1}]), {k, 1, Min[9, n]}], {n, 1, l}]
