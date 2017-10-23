@@ -1,0 +1,23 @@
+Did in worlfram. That is the actual answer
+499999996197938572728438886049548305
+
+(* Need the state transition matrix *)
+a = Table[If[i == j, i, If[i + 1 == j, 9 - i, 0]], {j, 1, 9}, {i, 1, 9}];
+   
+(* Cnt n,k counts how many number there are that have k different digits. Thay are all zero-less *)
+Cnt[n_, k_] := (MatrixPower[a, n - 1].{9, 0, 0, 0, 0, 0, 0, 0, 0})[[k]];
+
+Cnt0[n_, k_, nz_] := If[k + nz > n, 0, Binomial[n - 1, nz]*Cnt[n - nz, k]];
+(* Cntw0 gives how many n digit number with exactly k different digits and possibly extra 0 *)
+Cntw0[n_, k_, is_] :=   If[is, Sum[Cnt0[n, k, i], {i, 1, n - k}], Cnt[n, k]];
+  
+(* Complement set, how many numbers does not have exactly k digitis but can,cannot have 0 *)
+f[n_, k_, can_] := If[! can, (9 - k)^n, (9 - k)*(10 - k)^(n - 1)]
+
+(* function we need to implement for the problem at hand, it is rather self explanatory *)
+fun[l_] := (10^l - 1)*(10^l - 2)/2 - 
+  Sum[Sum[Cntw0[n, k, True]*(f[n, k, False]/2 + Sum[f[m, k, False], {m, 1, n - 1}]) +
+     Cntw0[n, k, False]*(f[n, k, True]/2 + Sum[f[m, k, True], {m, 1, n - 1}]), {k, 1, Min[9, n]}], {n, 1, l}]
+     
+Mod[fun[18], 1000267129]
+819963842
