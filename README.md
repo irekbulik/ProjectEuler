@@ -1,5 +1,5 @@
 # euler
- ##Disclaimer:
+ ## Disclaimer:
 **I feel uneasy keeping this repository pubic. Please do not use it to find the answers without solving the problems first!**
 
 **Notes to self**
