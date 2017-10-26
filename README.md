@@ -1,4 +1,7 @@
 # euler
+**Disclaimer:** 
+**I feel uneasy keeping this repository pubic. 
+  Please do not use to find the answers without solving the problems first. **
 
 It is high time to start collecting Project Euler solutions. 
 
