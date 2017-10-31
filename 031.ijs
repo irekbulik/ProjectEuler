@@ -1,4 +1,4 @@
-NB.          0.81
+ NB.          0.81
 NB.	    73682
 real_change=: 4 : 0 
 xx =: x 
