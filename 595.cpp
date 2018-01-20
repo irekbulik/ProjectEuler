@@ -20,7 +20,6 @@
  *    s(1) = 0
  *    s(2) = 1
  *    s(3) = 7/3
- *    s(4) = 38/13
  *    s(5) = 4213/871
  * 
  * the problem boils to finding how many groups of subsorted n cards 
