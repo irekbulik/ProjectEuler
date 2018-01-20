@@ -67,6 +67,7 @@ int main(){
        ans+=limit;
     }
     cout << "Answer 297 = " <<  ans << endl;
+    return 0;
 }
 
 
