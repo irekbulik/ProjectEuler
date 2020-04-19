@@ -1,6 +1,6 @@
 ! We know that the last coin is 0 for n = m because seed and m are
-! coprime. We can look at the big coins firs, then we just check that
-! explicit whether a given coin is possible
+! coprime. We can look at the big coins first, then we just check
+! explicitly whether a given coin is possible
 ! [0] gfortran -fdefault-integer-8 -O3 700.F -o 700 ; time ./700
 ! Answer 700 =      1517926517777556
 !
