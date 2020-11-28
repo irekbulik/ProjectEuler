@@ -15,6 +15,6 @@ def ET2(N):
 N = 100_000_000
 t = time.time()
 ans = (ET(N)+ET2(N))/2/N
-print(f"Answer 728 = {ans} time taken {time.time()-t}")
+print(f"Answer 728 = {int(ans)} time taken {time.time()-t}")
 
 
